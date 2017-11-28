@@ -1,0 +1,12 @@
+.btn {
+  width: 170px;
+}
+.form-group input, .form-group button {
+  display: inline-block;
+}
+#remove-index, #remove-name, #move-list {
+  width: 180px;
+}
+#removeFromIndex, #removeFromName, #to-done {
+  width: 110px;
+}
