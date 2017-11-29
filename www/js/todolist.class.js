@@ -32,17 +32,17 @@ class ToDoList {
   removeFromListByName(name) {
     for (let i = 0; i < this.items.length; i++) {
       if (name === this.items[i].name){
+        const removedTodo = this.items[i];
         this.removeFromListByIndex(i);
+        return removedTodo;
       }
     }
+    return;
   }
 
- // move function
   removeFromListAndAddToDone(name) {
-    // let doneList = [];
-    let doneItem = removeFromListByName(name);
-    this.doneItems.push(doneItem);
-    return doneList;
+    const doneItem = this.removeFromListByName(name);
+    return this.doneItems.push(doneItem);
   }
 
   moveToTop(name) {

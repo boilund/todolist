@@ -1,6 +1,5 @@
 
 let toDoList= new ToDoList();
-let doneList= new ToDoList();
 
 function renderList() {
   $('.toDoLists').empty();
@@ -70,7 +69,7 @@ $('#to-done').click(function(){
   renderList();
 
   $('.doneLists').empty();
-  for (let item of doneList.items) {
+  for (let item of toDoList.doneItems) {
   $('.doneLists').append(`
     <li class=list-group-item>${item.name}</li>
     `);
