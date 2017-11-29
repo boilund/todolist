@@ -7,40 +7,32 @@ class ToDoList {
 
   // add function
   addToList(item){
-
-    if (item !== '') { // not work!
-      this.items.push(item);
-    }
+    this.items.push(item);
   }
 
   addToTopOfList(item) {
-    if (item !== ''){ // not work!
-      this.items.unshift(item);
-    }
+    this.items.unshift(item);
   }
 
   // remove function
   removeFromBottomOfList() {
-    return this.items.pop();
+    this.items.pop();
   }
 
   removeFromTopOfList() {
-    return this.items.shift();
+    this.items.shift();
   }
 
   removeFromListByIndex(index) {
     if(index >= 0) {
-      return this.items.splice(index, 1);
+      this.items.splice(index, 1);
     }
   }
 
   removeFromListByName(name) {
     for (let i = 0; i < this.items.length; i++) {
-      // console.log(this.items[i].name);
       if (name === this.items[i].name){
-        // console.log(i);
-        return removeFromListByIndex(i);
-        // return this.items;
+        this.removeFromListByIndex(i);
       }
     }
   }
