@@ -22,16 +22,26 @@ renderList();
 
 // Lägga till button
 $('#add-first').click(function(){
-  let newList = $('#new-list').val();
+  const todoText = $('#new-list').val();
+  if (todoText === '') {
+    return;
+  }
+
   $('#new-list').val('');
-  addToTopOfList(newList);
+  const newToDo = new ToDo(todoText);
+  toDoList.addToTopOfList(newToDo);
   renderList();
 });
 
 $('#add-last').click(function(){
-  newList = $('#new-list').val();
+  const todoText = $('#new-list').val();
+  if (todoText === '') {
+    return;
+  }
+
   $('#new-list').val('');
-  addToList(newList);
+  const newToDo = new ToDo(todoText);
+  toDoList.addToList(newToDo);
   renderList();
 });
 
