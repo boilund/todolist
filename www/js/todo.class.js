@@ -1,8 +1,9 @@
-class ToDo extends ToDoList {
+class ToDo  {
 
-  constructor() {
-    super(item, priority, limit);
-
+  constructor(name) {
+    this.name = name;
+    // this.priority = priority;
+    // this.limit = limit;
   }
 
 }

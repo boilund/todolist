@@ -1,23 +1,14 @@
-let toDo = [
-  'Handla',
-  'Laga mat',
-  'Tvätt',
-  'Fixa cykel',
-  'Läxa',
-  'Klippa hår',
-  'Träna'
-];
 
-let doneList = [];
+let toDoList= new ToDoList();
+let doneList= new ToDoList();
 
 function renderList() {
   $('.toDoLists').empty();
-  for (let list of toDo) {
+  for (let item of toDoList.items) {
     $('.toDoLists').append(`
-    <li class=list-group-item>${list}</li>`)
+    <li class=list-group-item>${item.name}</li>`)
   };
 }
-
 renderList();
 
 // Lägga till button
@@ -49,24 +40,24 @@ $('#add-last').click(function(){
 $('#removeFromIndex').click(function(){
   let removeIndex = $('#remove-index').val();
   $('#remove-index').val('');
-  removeFromListByIndex(removeIndex, 1);
+  toDoList.removeFromListByIndex(removeIndex);
   renderList();
 });
 
 $('#removeFromName').click(function(){
   let removeName = $('#remove-name').val();
   $('#remove-name').val('');
-  removeFromListByName(removeName);
+  toDoList.removeFromListByName(removeName);
   renderList();
 });
 
 $('#remove-first').click(function(){
-  removeFromTopOfList();
+  toDoList.removeFromTopOfList();
   renderList();
 });
 
 $('#remove-last').click(function(){
-  removeFromBottomOfList();
+  toDoList.removeFromBottomOfList();
   renderList();
 });
 
@@ -75,13 +66,13 @@ $('#remove-last').click(function(){
 $('#to-done').click(function(){
   let done = $('#move-list').val();
   $('#move-list').val('');
-  removeFromListAndAddToDone(done);
+  toDoList.removeFromListAndAddToDone(done);
   renderList();
 
   $('.doneLists').empty();
-  for (let done of doneList) {
+  for (let item of doneList.items) {
   $('.doneLists').append(`
-    <li class=list-group-item>${done}</li>
+    <li class=list-group-item>${item.name}</li>
     `);
   }
 });
@@ -89,27 +80,27 @@ $('#to-done').click(function(){
 $('#to-top').click(function(){
   let topList = $('#move-list').val();
   $('#move-list').val('');
-  moveToTop(topList);
+  toDoList.moveToTop(topList);
   renderList();
 });
 
 $('#to-bottom').click(function(){
   let bottomList = $('#move-list').val();
   $('#move-list').val('');
-  moveToBottom(bottomList);
+  toDoList.moveToBottom(bottomList);
   renderList();
 });
 
 $('#ett-upp').click(function(){
   let up = $('#move-list').val();
   $('#move-list').val('');
-  moveUp(up);
+  toDoList.moveUp(up);
   renderList();
 });
 
 $('#ett-ner').click(function(){
   let down = $('#move-list').val();
   $('#move-list').val('');
-  moveDown(down);
+  toDoList.moveDown(down);
   renderList();
 });

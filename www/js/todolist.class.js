@@ -1,111 +1,103 @@
 class ToDoList {
 
-  constructor(item, priority, limit) {
-    // this.toDoLists = [];
-    this.item = item;
-    this.priority = priority;
-    this.limit = limit;
+  constructor() {
+    this.items = [];
+    this.doneItems = [];
   }
 
-  // 2.
-  addToList(item) {
-    toDo.push(item);
-    return toDo;
-  }
+  // add function
+  addToList(item){
 
-  // 3.
-  addToTopOfList(item) {
-    toDo.unshift(item);
-    return toDo;
-  }
-
-  // 4.
-  removeFromBottomOfList() {
-    return toDo.pop();
-  }
-
-  // 5.
-  removeFromTopOfList() {
-    return toDo.shift();
-  }
-
-  // 6.ta bort en sak by index
-  removeFromListByIndex(index) {
-    if(index >= 0) {
-      return toDo.splice(index, 1);
-      // return toDo.splice(index, 1)[0]; []を省いて'string'だけ取るため
+    if (item !== '') { // not work!
+      this.items.push(item);
     }
   }
 
-  // 7.ta bort en sak by name
+  addToTopOfList(item) {
+    if (item !== ''){ // not work!
+      this.items.unshift(item);
+    }
+  }
+
+  // remove function
+  removeFromBottomOfList() {
+    return this.items.pop();
+  }
+
+  removeFromTopOfList() {
+    return this.items.shift();
+  }
+
+  removeFromListByIndex(index) {
+    if(index >= 0) {
+      return this.items.splice(index, 1);
+    }
+  }
+
   removeFromListByName(name) {
-    for (let i = 0; i < toDo.length; i++) {
-      if (name == toDo[i]) {
-        removeFromListByIndex(i, 1);
-        return name;
+    for (let i = 0; i < this.items.length; i++) {
+      // console.log(this.items[i].name);
+      if (name === this.items[i].name){
+        // console.log(i);
+        return removeFromListByIndex(i);
+        // return this.items;
       }
     }
   }
 
-  // 8.ta bort en sak och lägg till den i en lista
+ // move function
   removeFromListAndAddToDone(name) {
+    // let doneList = [];
     let doneItem = removeFromListByName(name);
-    doneList.push(doneItem);
+    this.doneItems.push(doneItem);
     return doneList;
   }
 
-  // 9.flytta en sak till toppen av listan
   moveToTop(name) {
     let moveItem = removeFromListByName(name);
     addToTopOfList(moveItem);
-    return toDo;
+    return this.items;
   }
 
-  // 10.flytta en sak till bottom av listan
   moveToBottom(name) {
     let moveItem = removeFromListByName(name);
     addToList(moveItem);
-    return toDo;
+    return this.items;
   }
 
-  // 11.flytta en sak ett steg ner i listan
   moveDown(name) {
-    for (let i = 0; i < toDo.length; i++) {
-      if (name == toDo[i]) {
+    for (let i = 0; i < this.items.length; i++) {
+      if (name == this.items[i]) {
         removeFromListByName(name);
-        toDo.splice(i + 1, 0, name);
-        return toDo;
+        this.items.splice(i + 1, 0, name);
+        return this.items;
       }
     }
   }
 
-  // 12.flytta en sak ett steg upp i listan
   moveUp(name) {
-    for (let i = 0; i < toDo.length; i++) {
-      if (name == toDo[i]) {
+    for (let i = 0; i < this.items.length; i++) {
+      if (name == this.items[i]) {
         removeFromListByName(name);
-        toDo.splice(i - 1, 0, name);
-        return toDo;
+        this.items.splice(i - 1, 0, name);
+        return this.items;
       }
     }
   }
 
   // Loop
-  // 13.logga listan
-  logTodoList() {
-    for (let i = 0; i < toDo.length; i++) {
-      console.log('logga items:', toDo[i]);
+  logtoDoListsList() {
+    for (let i = 0; i < this.items.length; i++) {
+      console.log('logga items:', this.items[i]);
     }
   }
 
-  // 14.logga listan 2
-  logTodoListVer2() {
-    for (let item of toDo) {
-      console.log('logga items version 2:',item);
+  logtoDoListsListVer2() {
+    for (let item of this.items) {
+      console.log('logga items version 2:', item);
     }
   }
 
-  // 15.kräv inmatning
   askForItem() {
     let askItem = prompt('Ange en sak till om du vill');
     addToList(askItem);
