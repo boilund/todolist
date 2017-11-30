@@ -90,14 +90,14 @@ $('#to-bottom').click(function(){
   renderList();
 });
 
-$('#ett-upp').click(function(){
+$('#one-step-up').click(function(){
   let up = $('#move-list').val();
   $('#move-list').val('');
   toDoList.moveUp(up);
   renderList();
 });
 
-$('#ett-ner').click(function(){
+$('#one-step-down').click(function(){
   let down = $('#move-list').val();
   $('#move-list').val('');
   toDoList.moveDown(down);

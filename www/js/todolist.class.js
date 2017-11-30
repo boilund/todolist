@@ -58,25 +58,36 @@ class ToDoList {
     return this.items;
   }
 
-  moveDown(name) {
-    for (let i = 0; i < this.items.length; i++) {
-      if (name == this.items[i]) {
-        removeFromListByName(name);
-        this.items.splice(i + 1, 0, name);
-        return this.items;
+  getIndex(value, arr, prop) {
+    for(var i = 0; i < arr.length; i++) {
+      if(arr[i][prop] === value) {
+        return i;
       }
     }
+    return -1;
   }
 
   moveUp(name) {
-    for (let i = 0; i < this.items.length; i++) {
-      if (name == this.items[i]) {
-        removeFromListByName(name);
-        this.items.splice(i - 1, 0, name);
-        return this.items;
-      }
+    let index = this.getIndex(name, this.items, 'name');
+
+    if(index > 0) {
+      this.items[index].name = this.items[index - 1].name;
+      this.items[index - 1].name = name;
     }
+    return this.items;
   }
+
+  moveDown(name) {
+    let index = this.getIndex(name, this.items, 'name');
+
+    if(index < this.items.length - 1){
+      this.items[index].name = this.items[index + 1].name;
+      this.items[index + 1].name = name;
+    }
+    return this.items;
+  }
+
+
 
   // Loop
   logtoDoListsList() {
