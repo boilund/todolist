@@ -17,8 +17,10 @@ $('#add-first').click(function(){
     return;
   }
 
+  const priority = $('#inputPriority').val();
+
   $('#new-list').val('');
-  const newToDo = new ToDo(todoText);
+  const newToDo = new ToDo(todoText, priority);
   toDoList.addToTopOfList(newToDo);
   renderList();
 });
@@ -29,8 +31,10 @@ $('#add-last').click(function(){
     return;
   }
 
+  const priority = $('#inputPriority').val();
+
   $('#new-list').val('');
-  const newToDo = new ToDo(todoText);
+  const newToDo = new ToDo(todoText, priority);
   toDoList.addToList(newToDo);
   renderList();
 });

@@ -1,8 +1,8 @@
 class ToDo  {
 
-  constructor(name) {
+  constructor(name, priority) {
     this.name = name;
-    // this.priority = priority;
+    this.priority = priority;
     // this.limit = limit;
   }
 

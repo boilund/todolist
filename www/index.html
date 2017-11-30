@@ -34,12 +34,12 @@
       <div class="row mt-5">
         <div class="col-12 col-sm-6 mt-3">
           <h3>To do</h3>
-          <ul class="toDoLists list-group">
+          <ul class="to-do-lists list-group">
           </ul>
         </div>
         <div class="col-12 col-sm-6 mt-3">
           <h3>Done</h3>
-          <ul class="doneLists list-group">
+          <ul class="done-lists list-group">
           </ul>
         </div>
       </div>
@@ -49,6 +49,14 @@
           <h5><i class="fa fa-plus-circle" aria-hidden="true"></i> Lägga till</h5>
           <div class="form-group">
             <input type="text" class="form-control" id="new-list" placeholder="Skriv in en ny list">
+            <label for="inputPriority" class="mt-2">Priority</label>
+            <select id="inputPriority" class="form-control">
+              <option selected>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
           </div>
           <button id="add-first" class="btn btn-primary mt-2">
             Lägg till först
