@@ -87,24 +87,4 @@ class ToDoList {
     return this.items;
   }
 
-
-
-  // Loop
-  logtoDoListsList() {
-    for (let i = 0; i < this.items.length; i++) {
-      console.log('logga items:', this.items[i]);
-    }
-  }
-
-  logtoDoListsListVer2() {
-    for (let item of this.items) {
-      console.log('logga items version 2:', item);
-    }
-  }
-
-  askForItem() {
-    let askItem = prompt('Ange en sak till om du vill');
-    addToList(askItem);
-  }
-
 }
