@@ -10,7 +10,7 @@ function renderList() {
 }
 renderList();
 
-// Lägga till button
+// "add" buttons
 $('#add-first').click(function(){
   const todoText = $('#new-list').val();
   if (todoText === '') {
@@ -35,7 +35,7 @@ $('#add-last').click(function(){
   renderList();
 });
 
-// Ta bort button
+// "remove" buttons
 $('#removeFromIndex').click(function(){
   let removeIndex = $('#remove-index').val();
   $('#remove-index').val('');
@@ -61,7 +61,7 @@ $('#remove-last').click(function(){
 });
 
 
-// Flytta button
+// "move" buttons
 $('#to-done').click(function(){
   let done = $('#move-list').val();
   $('#move-list').val('');

@@ -5,7 +5,7 @@ class ToDoList {
     this.doneItems = [];
   }
 
-  // add function
+  // "add" functions
   addToList(item){
     this.items.push(item);
   }
@@ -14,7 +14,7 @@ class ToDoList {
     this.items.unshift(item);
   }
 
-  // remove function
+  // "remove" functions
   removeFromBottomOfList() {
     this.items.pop();
   }
@@ -40,20 +40,21 @@ class ToDoList {
     return;
   }
 
+  // "move" functions
   removeFromListAndAddToDone(name) {
     const doneItem = this.removeFromListByName(name);
     return this.doneItems.push(doneItem);
   }
 
   moveToTop(name) {
-    let moveItem = removeFromListByName(name);
-    addToTopOfList(moveItem);
+    const moveItem = this.removeFromListByName(name);
+    this.addToTopOfList(moveItem);
     return this.items;
   }
 
   moveToBottom(name) {
-    let moveItem = removeFromListByName(name);
-    addToList(moveItem);
+    const moveItem = this.removeFromListByName(name);
+    this.addToList(moveItem);
     return this.items;
   }
 
