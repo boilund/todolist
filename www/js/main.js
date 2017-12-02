@@ -107,3 +107,36 @@ $('#one-step-down').click(function(){
   toDoList.moveDown(down);
   renderList();
 });
+$('#to-bottom').on('click', function(){
+  let bottomList = $('#move-list').val();
+  $('#move-list').val('');
+  toDoList.moveToBottom(bottomList);
+  renderList();
+});
+
+$('#one-step-up').on('click', function(){
+  let up = $('#move-list').val();
+  $('#move-list').val('');
+  toDoList.moveUp(up);
+  renderList();
+});
+
+$('#one-step-down').on('click', function(){
+  let down = $('#move-list').val();
+  $('#move-list').val('');
+  toDoList.moveDown(down);
+  renderList();
+});
+
+$('input').on('click', function() {
+  let done = $('input:checked').val();
+  console.log(done);
+  toDoList.removeFromListAndAddToDone(done);
+  renderList();
+});
+
+$('#more-btn').on('click', function(){
+  $('.hide').toggle();
+  $('.show-more').toggle();
+  $('.hide-more').toggle();
+});

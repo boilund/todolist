@@ -32,20 +32,36 @@
     <div class="container">
 
       <div class="row mt-5">
-        <div class="col-12 col-sm-6 mt-3">
-          <h3>To do</h3>
-          <ul class="to-do-lists list-group">
-          </ul>
+
+        <div class="col-12 col-sm-6">
+          <div class="bg-light p-2">
+            <h3>To do</h3>
+            <ul class="to-do-lists list-group">
+            </ul>
+          </div>
         </div>
-        <div class="col-12 col-sm-6 mt-3">
-          <h3>Done</h3>
-          <ul class="done-lists list-group">
-          </ul>
+
+        <div class="col-12 col-sm-6">
+          <div class="bg-light p-2">
+            <h3>Done</h3>
+            <ul class="done-lists list-group">
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <button id="more-btn" class="btn btn-primary mt-2">
+            <span class="show-more">Visa menu</span>
+            <span class="hide-more">Dölj</span>
+          </button>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-sm-4 mt-5">
+        <div class="col-sm-4 mt-5 hide">
           <h5><i class="fa fa-plus-circle" aria-hidden="true"></i> Lägga till</h5>
           <div class="form-group">
             <input type="text" class="form-control" id="new-list" placeholder="Skriv in en ny list">
@@ -66,7 +82,7 @@
           </button>
         </div>
 
-        <div class="col-sm-4 mt-5">
+        <div class="col-sm-4 mt-5 hide">
           <h5><i class="fa fa-minus-circle" aria-hidden="true"></i> Ta bort</h5>
           <div class="form-group">
             <input type="number" class="form-control" id="remove-index" placeholder="Ange ett index number">
@@ -88,7 +104,7 @@
           </button>
         </div>
 
-        <div class="col-sm-4 mt-5">
+        <div class="col-sm-4 mt-5 hide">
           <h5><i class="fa fa-arrows" aria-hidden="true"></i> Flytta</h5>
           <div class="form-group">
             <input type="text" class="form-control" id="move-list" placeholder="Ange en list">
@@ -111,6 +127,7 @@
           </button>
         </div>
       </div>
+
     </div>
   </main>
   <footer class="footer container-fluid  bg-primary">
