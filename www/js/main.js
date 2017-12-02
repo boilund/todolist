@@ -1,11 +1,32 @@
 
-let toDoList= new ToDoList();
+let toDoList = new ToDoList();
 
 function renderList() {
-  $('.toDoLists').empty();
+  $('.to-do-lists').empty();
   for (let item of toDoList.items) {
-    $('.toDoLists').append(`
-    <li class=list-group-item>${item.name}</li>`)
+    $('.to-do-lists').append(`
+    <li class="list-group-item list-group-item-action">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input id="check" class="form-check-input ml-1" type="checkbox" value="${item.name}">
+            ${item.name}
+        </label>
+        <div class="dropdown float-right">
+          <button class="btn btn-primary dropdown-toggle mt-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+            <p>Priority:  ${item.priority}</p>
+            <button id="remove-last" class="dropdown-item　btn btn-secondary mt-2">
+            Edit
+            </button>
+            <button id="remove-last" class="dropdown-item　btn btn-secondary mt-2">
+            Ta bort
+            </button>
+          </div>
+        </div>
+      </div>
+    </li>
+    `)
   };
 }
 renderList();
@@ -80,18 +101,18 @@ $('#to-done').on('click', function() {
   }
 });
 
-$('#to-top').click(function(){
-  let topList = $('#move-list').val();
-  $('#move-list').val('');
-  toDoList.moveToTop(topList);
+$(document).on('click', '#check', function(){
+  let done = $('#check:checked').val();
+  console.log(done);
+  toDoList.removeFromListAndAddToDone(done);
   renderList();
-});
 
-$('#to-bottom').click(function(){
-  let bottomList = $('#move-list').val();
-  $('#move-list').val('');
-  toDoList.moveToBottom(bottomList);
-  renderList();
+  $('.done-lists').empty();
+  for (let item of toDoList.doneItems) {
+  $('.done-lists').append(`
+    <li class=list-group-item>${item.name}</li>
+    `);
+  }
 });
 
 $('#to-top').on('click', function() {
