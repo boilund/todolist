@@ -72,9 +72,9 @@ $('#to-done').on('click', function() {
   toDoList.removeFromListAndAddToDone(done);
   renderList();
 
-  $('.doneLists').empty();
+  $('.done-lists').empty();
   for (let item of toDoList.doneItems) {
-  $('.doneLists').append(`
+  $('.done-lists').append(`
     <li class=list-group-item>${item.name}</li>
     `);
   }
