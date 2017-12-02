@@ -11,7 +11,7 @@ function renderList() {
 renderList();
 
 // "add" buttons
-$('#add-first').click(function(){
+$('#add-first').on('click', function() {
   const todoText = $('#new-list').val();
   if (todoText === '') {
     return;
@@ -25,7 +25,7 @@ $('#add-first').click(function(){
   renderList();
 });
 
-$('#add-last').click(function(){
+$('#add-last').on('click', function() {
   const todoText = $('#new-list').val();
   if (todoText === '') {
     return;
@@ -40,33 +40,33 @@ $('#add-last').click(function(){
 });
 
 // "remove" buttons
-$('#removeFromIndex').click(function(){
+$('#removeFromIndex').on('click', function() {
   let removeIndex = $('#remove-index').val();
   $('#remove-index').val('');
   toDoList.removeFromListByIndex(removeIndex);
   renderList();
 });
 
-$('#removeFromName').click(function(){
+$('#removeFromName').on('click', function() {
   let removeName = $('#remove-name').val();
   $('#remove-name').val('');
   toDoList.removeFromListByName(removeName);
   renderList();
 });
 
-$('#remove-first').click(function(){
+$('#remove-first').on('click', function() {
   toDoList.removeFromTopOfList();
   renderList();
 });
 
-$('#remove-last').click(function(){
+$('#remove-last').on('click', function() {
   toDoList.removeFromBottomOfList();
   renderList();
 });
 
 
 // "move" buttons
-$('#to-done').click(function(){
+$('#to-done').on('click', function() {
   let done = $('#move-list').val();
   $('#move-list').val('');
   toDoList.removeFromListAndAddToDone(done);
@@ -94,48 +94,35 @@ $('#to-bottom').click(function(){
   renderList();
 });
 
-$('#one-step-up').click(function(){
-  let up = $('#move-list').val();
+$('#to-top').on('click', function() {
+  let topList = $('#move-list').val();
   $('#move-list').val('');
-  toDoList.moveUp(up);
+  toDoList.moveToTop(topList);
   renderList();
 });
 
-$('#one-step-down').click(function(){
-  let down = $('#move-list').val();
-  $('#move-list').val('');
-  toDoList.moveDown(down);
-  renderList();
-});
-$('#to-bottom').on('click', function(){
+$('#to-bottom').on('click', function() {
   let bottomList = $('#move-list').val();
   $('#move-list').val('');
   toDoList.moveToBottom(bottomList);
   renderList();
 });
 
-$('#one-step-up').on('click', function(){
+$('#one-step-up').on('click', function() {
   let up = $('#move-list').val();
   $('#move-list').val('');
   toDoList.moveUp(up);
   renderList();
 });
 
-$('#one-step-down').on('click', function(){
+$('#one-step-down').on('click', function() {
   let down = $('#move-list').val();
   $('#move-list').val('');
   toDoList.moveDown(down);
   renderList();
 });
 
-$('input').on('click', function() {
-  let done = $('input:checked').val();
-  console.log(done);
-  toDoList.removeFromListAndAddToDone(done);
-  renderList();
-});
-
-$('#more-btn').on('click', function(){
+$('#more-btn').on('click', function() {
   $('.hide').toggle();
   $('.show-more').toggle();
   $('.hide-more').toggle();
