@@ -3,12 +3,13 @@ let toDoList = new ToDoList();
 
 function renderList() {
   $('.to-do-lists').empty();
+  let i = 0;
   for (let item of toDoList.items) {
     $('.to-do-lists').append(`
-    <li class="list-group-item list-group-item-action">
+    <li class="list-group-item list-group-item-action" index="${i}">
       <div class="form-check">
         <label class="form-check-label">
-          <input id="check" class="form-check-input ml-1" type="checkbox" value="${item.name}">
+          <input id="check" class="form-check-input" type="checkbox" value="${item.name}">
             ${item.name}
         </label>
         <div class="dropdown float-right">
@@ -16,6 +17,7 @@ function renderList() {
           </button>
           <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
             <p>Priority:  ${item.priority}</p>
+            <button id="remove-this" class="dropdown-item　btn btn-secondary mt-2">
             Delete
             </button>
           </div>
@@ -23,6 +25,7 @@ function renderList() {
       </div>
     </li>
     `)
+    i++;
   };
 }
 renderList();
@@ -81,6 +84,11 @@ $('#remove-last').on('click', function() {
   renderList();
 });
 
+$(document).on('click','#remove-this', function(){
+  let removeItemIndex = $(this).parent().closest('li').attr('index')
+  toDoList.removeFromListByIndex(removeItemIndex);
+  renderList();
+});
 
 // "move" buttons
 $('#to-done').on('click', function() {
