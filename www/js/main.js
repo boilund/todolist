@@ -16,11 +16,7 @@ function renderList() {
           </button>
           <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
             <p>Priority:  ${item.priority}</p>
-            <button id="remove-last" class="dropdown-item　btn btn-secondary mt-2">
-            Edit
-            </button>
-            <button id="remove-last" class="dropdown-item　btn btn-secondary mt-2">
-            Ta bort
+            Delete
             </button>
           </div>
         </div>
