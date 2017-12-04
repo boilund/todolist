@@ -107,7 +107,6 @@ $('#to-done').on('click', function() {
 
 $(document).on('click', '#check', function(){
   let done = $('#check:checked').val();
-  console.log(done);
   toDoList.removeFromListAndAddToDone(done);
   renderList();
 
