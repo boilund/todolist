@@ -120,9 +120,3 @@ $('#one-step-down').on('click', function() {
   toDoList.moveDown(down);
   renderList();
 });
-
-$('#more-btn').on('click', function() {
-  $('.hide').toggle();
-  $('.show-more').toggle();
-  $('.hide-more').toggle();
-});
