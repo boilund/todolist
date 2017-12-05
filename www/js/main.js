@@ -59,31 +59,6 @@ $('#add-last').on('click', function() {
   renderList();
 });
 
-// "remove" buttons
-$('#removeFromIndex').on('click', function() {
-  let removeIndex = $('#remove-index').val();
-  $('#remove-index').val('');
-  toDoList.removeFromListByIndex(removeIndex);
-  renderList();
-});
-
-$('#removeFromName').on('click', function() {
-  let removeName = $('#remove-name').val();
-  $('#remove-name').val('');
-  toDoList.removeFromListByName(removeName);
-  renderList();
-});
-
-$('#remove-first').on('click', function() {
-  toDoList.removeFromTopOfList();
-  renderList();
-});
-
-$('#remove-last').on('click', function() {
-  toDoList.removeFromBottomOfList();
-  renderList();
-});
-
 $(document).on('click','#remove-this', function(){
   let removeItemIndex = $(this).parent().closest('li').attr('index')
   toDoList.removeFromListByIndex(removeItemIndex);
