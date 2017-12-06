@@ -1,5 +1,8 @@
+const flexjson = require('jsonflex')();
+
 let express = require('express');
 let app = express();
+app.use(flexjson);
 
 app.use(express.static('www'));
 

@@ -1,0 +1,60 @@
+{
+  "app": {
+    "toDoList": {
+      "items": [
+        {
+          "name": "kljkl",
+          "priority": "1"
+        },
+        {
+          "name": "a",
+          "priority": "1"
+        },
+        {
+          "name": "a",
+          "priority": "1"
+        },
+        {
+          "name": "d",
+          "priority": "1"
+        }
+      ],
+      "doneItems": [
+        {
+          "name": "g",
+          "priority": "1"
+        },
+        {
+          "name": "bb",
+          "priority": "1"
+        },
+        {
+          "name": "c",
+          "priority": "1"
+        },
+        {
+          "name": "okm",
+          "priority": "1"
+        },
+        {
+          "name": "ij",
+          "priority": "1"
+        },
+        {
+          "name": "g",
+          "priority": "1"
+        },
+        {
+          "name": "a",
+          "priority": "1"
+        },
+        {
+          "name": "s",
+          "priority": "1"
+        }
+      ],
+      "⚙": "ToDoList"
+    },
+    "⚙": "App"
+  }
+}
