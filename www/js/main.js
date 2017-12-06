@@ -1,34 +1,18 @@
+let app;
 
-let toDoList = new ToDoList();
+JSON._classes(App, ToDoList);
 
-function renderList() {
-  $('.to-do-lists').empty();
-  let i = 0;
-  for (let item of toDoList.items) {
-    $('.to-do-lists').append(`
-    <li class="list-group-item list-group-item-action" index="${i}">
-      <div class="form-check">
-        <label class="form-check-label">
-          <input id="check" class="form-check-input" type="checkbox" value="${item.name}">
-            ${item.name}
-        </label>
-        <div class="dropdown float-right">
-          <button class="btn btn-primary dropdown-toggle mt-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </button>
-          <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
-            <p>Priority:  ${item.priority}</p>
-            <button id="remove-this" class="dropdown-item　btn btn-secondary mt-2">
-            Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    </li>
-    `)
-    i++;
-  };
-}
-renderList();
+JSON._load('to-do-lists.json')
+.then((data) => {
+  app = data.app;
+})
+.catch(() => {
+  app = new App();
+  app.render();
+})
+.then(() => {
+  app.render();
+});
 
 // "add" buttons
 $('#add-first').on('click', function() {
@@ -41,8 +25,8 @@ $('#add-first').on('click', function() {
 
   $('#new-list').val('');
   const newToDo = new ToDo(todoText, priority);
-  toDoList.addToTopOfList(newToDo);
-  renderList();
+  app.toDoList.addToTopOfList(newToDo);
+  app.render();
 });
 
 $('#add-last').on('click', function() {
@@ -55,68 +39,48 @@ $('#add-last').on('click', function() {
 
   $('#new-list').val('');
   const newToDo = new ToDo(todoText, priority);
-  toDoList.addToList(newToDo);
-  renderList();
+  app.toDoList.addToList(newToDo);
+  app.render();
 });
 
-$(document).on('click','#remove-this', function(){
-  let removeItemIndex = $(this).parent().closest('li').attr('index')
-  toDoList.removeFromListByIndex(removeItemIndex);
-  renderList();
+// "remove" button
+$(document).on('click', '#remove-this', function() {
+  let removeItemIndex = $(this).parent().closest('li').attr('index');
+  app.toDoList.removeFromListByIndex(removeItemIndex);
+  app.render();
 });
 
 // "move" buttons
-$('#to-done').on('click', function() {
-  let done = $('#move-list').val();
-  $('#move-list').val('');
-  toDoList.removeFromListAndAddToDone(done);
-  renderList();
-
-  $('.done-lists').empty();
-  for (let item of toDoList.doneItems) {
-  $('.done-lists').append(`
-    <li class=list-group-item>${item.name}</li>
-    `);
-  }
-});
-
-$(document).on('click', '#check', function(){
+$(document).on('click', '#check', function() {
   let done = $('#check:checked').val();
-  toDoList.removeFromListAndAddToDone(done);
-  renderList();
-
-  $('.done-lists').empty();
-  for (let item of toDoList.doneItems) {
-  $('.done-lists').append(`
-    <li class=list-group-item>${item.name}</li>
-    `);
-  }
+  app.toDoList.removeFromListAndAddToDone(done);
+  app.render();
 });
 
 $('#to-top').on('click', function() {
   let topList = $('#move-list').val();
   $('#move-list').val('');
-  toDoList.moveToTop(topList);
-  renderList();
+  app.toDoList.moveToTop(topList);
+  app.render();
 });
 
 $('#to-bottom').on('click', function() {
   let bottomList = $('#move-list').val();
   $('#move-list').val('');
-  toDoList.moveToBottom(bottomList);
-  renderList();
+  app.toDoList.moveToBottom(bottomList);
+  app.render();
 });
 
 $('#one-step-up').on('click', function() {
   let up = $('#move-list').val();
   $('#move-list').val('');
-  toDoList.moveUp(up);
-  renderList();
+  app.toDoList.moveUp(up);
+  app.render();
 });
 
 $('#one-step-down').on('click', function() {
   let down = $('#move-list').val();
   $('#move-list').val('');
-  toDoList.moveDown(down);
-  renderList();
+  app.toDoList.moveDown(down);
+  app.render();
 });
