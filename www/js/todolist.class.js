@@ -43,7 +43,7 @@ class ToDoList {
   // "move" functions
   removeFromListAndAddToDone(name) {
     const doneItem = this.removeFromListByName(name);
-    return this.doneItems.push(doneItem);
+    return this.doneItems.unshift(doneItem);
   }
 
   moveToTop(name) {
