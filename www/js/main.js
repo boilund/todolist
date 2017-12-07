@@ -15,29 +15,37 @@ JSON._load('to-do-lists.json')
 });
 
 // "add" buttons
-$('#add-first').on('click', function() {
+$(document).on('click', '#add-first', function() {
   const todoText = $('#new-list').val();
   if (todoText === '') {
     return;
   }
-
   const priority = $('#inputPriority').val();
-
   $('#new-list').val('');
   const newToDo = new ToDo(todoText, priority);
   app.toDoList.addToTopOfList(newToDo);
   app.render();
 });
 
-$('#add-last').on('click', function() {
+$(document).on('click', '#add-last', function() {
   const todoText = $('#new-list').val();
   if (todoText === '') {
     return;
   }
-
   const priority = $('#inputPriority').val();
-
   $('#new-list').val('');
+  const newToDo = new ToDo(todoText, priority);
+  app.toDoList.addToList(newToDo);
+  app.render();
+});
+
+$(document).on('click', '#add', function() {
+  const todoText = $('#new-item').val();
+  if (todoText === '') {
+    return;
+  }
+  const priority = $('#inputPriority').val();
+  $('.new-list').val('');
   const newToDo = new ToDo(todoText, priority);
   app.toDoList.addToList(newToDo);
   app.render();

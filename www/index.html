@@ -40,10 +40,10 @@
             </ul>
             <div class="mt-3">
               <div class="input-group">
-                <input type="text" class="form-control" id="new-list" placeholder="Add a list">
+                <input type="text" id="new-item" class="form-control" placeholder="Add a list">
                 <div class="input-group-btn">
-                  <button id="add-last" type="button" class="btn btn-secondary">
-                    Add
+                  <button type="button" id="add" class="btn btn-secondary">
+                    <i class="fa fa-plus text-white" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -65,7 +65,7 @@
         <div class="col-sm-6 mt-5">
           <h5><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</h5>
           <div class="form-group">
-            <input type="text" class="form-control" id="new-list" placeholder="Add a list">
+            <input type="text" id="new-list" class="form-control" placeholder="Add a list">
             <label for="inputPriority" class="mt-2">Priority</label>
             <select id="inputPriority" class="form-control">
               <option selected>1</option>
