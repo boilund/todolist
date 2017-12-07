@@ -6,7 +6,7 @@ class ToDoList {
   }
 
   // "add" functions
-  addToList(item){
+  addToList(item) {
     this.items.push(item);
   }
 
