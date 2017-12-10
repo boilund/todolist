@@ -92,3 +92,9 @@ $('#one-step-down').on('click', function() {
   app.toDoList.moveDown(down);
   app.render();
 });
+
+// "sort" button
+$('#sort').on('click', function() {
+  app.toDoList.sortList();
+  app.render();
+});
