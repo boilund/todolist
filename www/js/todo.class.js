@@ -1,4 +1,4 @@
-class ToDo  {
+class ToDo {
 
   constructor(name, priority) {
     this.name = name;

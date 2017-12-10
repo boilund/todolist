@@ -24,14 +24,14 @@ class ToDoList {
   }
 
   removeFromListByIndex(index) {
-    if(index >= 0) {
+    if (index >= 0) {
       this.items.splice(index, 1);
     }
   }
 
   removeFromListByName(name) {
     for (let i = 0; i < this.items.length; i++) {
-      if (name === this.items[i].name){
+      if (name === this.items[i].name) {
         const removedTodo = this.items[i];
         this.removeFromListByIndex(i);
         return removedTodo;
@@ -59,8 +59,8 @@ class ToDoList {
   }
 
   getIndex(value, arr, prop) {
-    for(var i = 0; i < arr.length; i++) {
-      if(arr[i][prop] === value) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i][prop] === value) {
         return i;
       }
     }
@@ -70,7 +70,7 @@ class ToDoList {
   moveUp(name) {
     let index = this.getIndex(name, this.items, 'name');
 
-    if(index > 0) {
+    if (index > 0) {
       this.items[index].name = this.items[index - 1].name;
       this.items[index - 1].name = name;
     }
@@ -80,7 +80,7 @@ class ToDoList {
   moveDown(name) {
     let index = this.getIndex(name, this.items, 'name');
 
-    if(index < this.items.length - 1){
+    if (index < this.items.length - 1) {
       this.items[index].name = this.items[index + 1].name;
       this.items[index + 1].name = name;
     }
@@ -88,7 +88,7 @@ class ToDoList {
   }
 
   sortList() {
-    this.items.sort(function(a, b) {
+    this.items.sort(function (a, b) {
       if (a.priority > b.priority) {
         return 1;
       } else if (a.priority < b.priority) {

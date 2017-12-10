@@ -40,7 +40,9 @@ class App {
       `)
     };
 
-    JSON._save('to-do-lists', {app: this});
+    JSON._save('to-do-lists', {
+      app: this
+    });
   }
 
 }
