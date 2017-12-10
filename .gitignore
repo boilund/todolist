@@ -1,4 +1,4 @@
 node_modules
 .DS_Store
 style.css
-to-do-lists.json
+www/json/to-do-lists.json
