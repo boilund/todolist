@@ -45,7 +45,7 @@ $(document).on('click', '#add', function() {
     return;
   }
   const priority = $('#inputPriority').val();
-  $('.new-list').val('');
+  $('#new-item').val('');
   const newToDo = new ToDo(todoText, priority);
   app.toDoList.addToList(newToDo);
   app.render();
