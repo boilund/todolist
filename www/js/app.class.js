@@ -82,11 +82,14 @@ class App {
       if (todoText === '') {
         return;
       }
-      const priority = $('#inputPriority').val();
-      $('#new-item').val('');
+      let priority = $('#inputPriority').val();
+      if (priority === 'Priority') {
+        priority = 1;
+      }
       const newToDo = new ToDo(todoText, priority);
       this.toDoList.addToList(newToDo);
       this.render();
+      $('#new-item').val('');
     } else if (element.parent('button').is('#remove-this')) {
       const removeItemIndex = element.parent().closest('li').attr('index');
       this.toDoList.removeFromListByIndex(removeItemIndex);
@@ -97,14 +100,14 @@ class App {
       this.render();
     } else if (element.parent('button').is('#one-step-up')) {
       const up = $('#move-list').val();
-      $('#move-list').val('');
       this.toDoList.moveUp(up);
       this.render();
+      $('#move-list').val('');
     } else if (element.parent('button').is('#one-step-down')) {
       const down = $('#move-list').val();
-      $('#move-list').val('');
       this.toDoList.moveDown(down);
       this.render();
+      $('#move-list').val('');
     } else if (element.parent('li').is('#sort')) {
       this.toDoList.sortList();
       this.render();
