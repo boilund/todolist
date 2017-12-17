@@ -1,7 +1,12 @@
+// Global variable used in Base constructor
+let appObject = undefined;
+
 class App {
 
   constructor() {
     this.toDoList = new ToDoList();
+    this.setupEventHandling();
+    appObject = this;
   }
 
   render() {
@@ -44,5 +49,66 @@ class App {
       app: this
     });
   }
+  // Global eventhandling
+  setupEventHandling(){
+    // only run this code once
+    let lastEvent
 
+    if(appObject === undefined){
+      $(document).on(
+        // react on events on all elements in the DOM
+        'click keyup mouseenter mouseleave change',
+        '*',
+        function(e){
+          // stop propagation of the event to parent elements
+          // (but only within our event handler)
+          if(lastEvent === e){ return; }
+          lastEvent = e;
+          // e.type = type of event (click, keyup etc)
+          // e.target = the element clicked
+          let me = $(e.target);
+
+          if(e.type === 'click') {
+            appObject.click(me);
+          }
+        }
+      );
+    }
+  }
+
+  click(element) {
+    if(element.parent('button').is('#add')) {
+      const todoText = $('#new-item').val();
+      if (todoText === '') {
+        return;
+      }
+      const priority = $('#inputPriority').val();
+      $('#new-item').val('');
+      const newToDo = new ToDo(todoText, priority);
+      this.toDoList.addToList(newToDo);
+      this.render();
+    } else if (element.parent('button').is('#remove-this')) {
+      const removeItemIndex = element.parent().closest('li').attr('index');
+      this.toDoList.removeFromListByIndex(removeItemIndex);
+      this.render();
+    } else if (element.is('#check')) {
+      const done = $('#check:checked').val();
+      this.toDoList.removeFromListAndAddToDone(done);
+      this.render();
+    } else if (element.parent('button').is('#one-step-up')) {
+      const up = $('#move-list').val();
+      $('#move-list').val('');
+      this.toDoList.moveUp(up);
+      this.render();
+    } else if (element.parent('button').is('#one-step-down')) {
+      const down = $('#move-list').val();
+      $('#move-list').val('');
+      this.toDoList.moveDown(down);
+      this.render();
+    } else if (element.parent('li').is('#sort')) {
+      this.toDoList.sortList();
+      this.render();
+    }
+
+  }
 }
