@@ -50,25 +50,27 @@ class App {
     });
   }
   // Global eventhandling
-  setupEventHandling(){
+  setupEventHandling() {
     // only run this code once
     let lastEvent
 
-    if(appObject === undefined){
+    if (appObject === undefined) {
       $(document).on(
         // react on events on all elements in the DOM
         'click keyup mouseenter mouseleave change',
         '*',
-        function(e){
+        function (e) {
           // stop propagation of the event to parent elements
           // (but only within our event handler)
-          if(lastEvent === e){ return; }
+          if (lastEvent === e) {
+            return;
+          }
           lastEvent = e;
           // e.type = type of event (click, keyup etc)
           // e.target = the element clicked
           let me = $(e.target);
 
-          if(e.type === 'click') {
+          if (e.type === 'click') {
             appObject.click(me);
           }
         }
