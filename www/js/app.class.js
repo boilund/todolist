@@ -73,13 +73,17 @@ class App {
           if (e.type === 'click') {
             appObject.click(me);
           }
+
+          if (e.type === 'keyup') {
+            appObject.keyup(me, e);
+          }
         }
       );
     }
   }
 
   click(element) {
-    if(element.parent('button').is('#add')) {
+    if (element.closest('button').is('#add')) {
       const todoText = $('#new-item').val();
       if (todoText === '') {
         return;
@@ -92,7 +96,7 @@ class App {
       this.toDoList.addToList(newToDo);
       this.render();
       $('#new-item').val('');
-    } else if (element.parent('button').is('#remove-this')) {
+    } else if (element.closest('button').is('#remove-this')) {
       const removeItemIndex = element.parent().closest('li').attr('index');
       this.toDoList.removeFromListByIndex(removeItemIndex);
       this.render();
@@ -100,12 +104,12 @@ class App {
       const done = $('#check:checked').val();
       this.toDoList.removeFromListAndAddToDone(done);
       this.render();
-    } else if (element.parent('button').is('#one-step-up')) {
+    } else if (element.closest('button').is('#one-step-up')) {
       const up = $('#move-list').val();
       this.toDoList.moveUp(up);
       this.render();
       $('#move-list').val('');
-    } else if (element.parent('button').is('#one-step-down')) {
+    } else if (element.closest('button').is('#one-step-down')) {
       const down = $('#move-list').val();
       this.toDoList.moveDown(down);
       this.render();
@@ -114,6 +118,21 @@ class App {
       this.toDoList.sortList();
       this.render();
     }
+  }
 
+  keyup(element, event) {
+    // add a new cat or owner if we press enter in the name fields
+    // (which -> the code of the key pressed, enter is 13)
+    // if ( (element.is('#new-item') || element.is('#add') || element.is('#inputPriority') ) && event.which == 13) {
+
+    if (element.closest('#add-group') && event.which == 13) {
+      $('#add').click();
+
+    } else if (element.closest('button') && event.which == 13) {
+      $('#one-step-up').click();
+
+    } else if (element.closest('button') && event.which == 13) {
+      $('#one-step-down').click();
+    }
   }
 }
