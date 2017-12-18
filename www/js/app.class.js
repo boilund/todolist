@@ -22,7 +22,7 @@ class App {
           </label>
           <div class="btn-toolbar float-right">
             <div>
-              <button id="primary" class="btn btn-sm btn-dark rounded-circle">
+              <button id="priority" class="btn btn-sm btn-primary rounded-circle">
               ${item.priority}
               </button>
               <button id="remove-this" class="btn btn-link text-dark">
