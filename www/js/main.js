@@ -8,8 +8,8 @@ JSON._load('to-do-lists.json')
   })
   .catch(() => {
     app = new App();
-    app.render();
+    app.renderLists();
   })
   .then(() => {
-    app.render();
+    app.renderLists();
   });

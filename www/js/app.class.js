@@ -9,7 +9,8 @@ class App {
     appObject = this;
   }
 
-  render() {
+
+  renderLists() {
     $('.to-do-lists').empty();
     let i = 0;
     for (let item of this.toDoList.items) {
@@ -94,37 +95,33 @@ class App {
       }
       const newToDo = new ToDo(todoText, priority);
       this.toDoList.addToList(newToDo);
-      this.render();
+      this.renderLists();
       $('#new-item').val('');
     } else if (element.closest('button').is('#remove-this')) {
       const removeItemIndex = element.parent().closest('li').attr('index');
       this.toDoList.removeFromListByIndex(removeItemIndex);
-      this.render();
+      this.renderLists();
     } else if (element.is('#check')) {
       const done = $('#check:checked').val();
       this.toDoList.removeFromListAndAddToDone(done);
-      this.render();
+      this.renderLists();
     } else if (element.closest('button').is('#one-step-up')) {
       const up = $('#move-list').val();
       this.toDoList.moveUp(up);
-      this.render();
+      this.renderLists();
       $('#move-list').val('');
     } else if (element.closest('button').is('#one-step-down')) {
       const down = $('#move-list').val();
       this.toDoList.moveDown(down);
-      this.render();
+      this.renderLists();
       $('#move-list').val('');
     } else if (element.parent('li').is('#sort')) {
       this.toDoList.sortList();
-      this.render();
+      this.renderLists();
     }
   }
 
   keyup(element, event) {
-    // add a new cat or owner if we press enter in the name fields
-    // (which -> the code of the key pressed, enter is 13)
-    // if ( (element.is('#new-item') || element.is('#add') || element.is('#inputPriority') ) && event.which == 13) {
-
     if (element.closest('#add-group') && event.which == 13) {
       $('#add').click();
 
