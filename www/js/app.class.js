@@ -15,8 +15,8 @@ class App {
       <div class="row mt-2">
 
         <div class="col-md-6">
-          <div class="bg-light mt-4 p-2 list-holder">
-            <h4>To do</h4>
+          <div class="bg-light mt-4 p-3 list-holder">
+            <h5>To do</h5>
             <ul class="to-do-lists list-group">
               <!-- add lists from js -->
             </ul>
@@ -42,8 +42,8 @@ class App {
         </div>
 
         <div class="col-md-6">
-          <div class="bg-light mt-4 p-2 list-holder">
-            <h4>Done</h4>
+          <div class="bg-light mt-4 p-3 list-holder">
+            <h5>Done</h5>
             <ul class="done-lists list-group">
               <!-- add lists from js -->
             </ul>
