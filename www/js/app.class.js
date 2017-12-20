@@ -9,6 +9,51 @@ class App {
     appObject = this;
   }
 
+  renderHTML() {
+    $('main').html(`
+    <div class="container">
+      <div class="row mt-2">
+
+        <div class="col-md-6">
+          <div class="bg-light mt-4 p-2 list-holder">
+            <h4>To do</h4>
+            <ul class="to-do-lists list-group">
+              <!-- add lists from js -->
+            </ul>
+            <div class="mt-4">
+              <div id="add-group" class="input-group">
+                <input type="text" id="new-item" class="form-control" placeholder="Add a list">
+                <select id="inputPriority" class="form-control">
+                  <option selected>Priority</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+                <div class="input-group-btn">
+                  <button type="button" id="add" class="btn btn-warning">
+                    <i class="fa fa-plus text-white" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="bg-light mt-4 p-2 list-holder">
+            <h4>Done</h4>
+            <ul class="done-lists list-group">
+              <!-- add lists from js -->
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    `);
+  }
 
   renderLists() {
     $('.to-do-lists').empty();
@@ -50,6 +95,7 @@ class App {
       app: this
     });
   }
+
   // Global eventhandling
   setupEventHandling() {
     // only run this code once

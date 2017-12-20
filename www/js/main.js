@@ -11,5 +11,6 @@ JSON._load('to-do-lists.json')
     app.renderLists();
   })
   .then(() => {
+    app.renderHTML();
     app.renderLists();
   });
