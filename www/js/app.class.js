@@ -83,12 +83,17 @@ class App {
     };
 
     $('.done-lists').empty();
+    let j = 0;
     for (let item of this.toDoList.doneItems) {
       $('.done-lists').append(`
-      <li class="list-group-item list-group-item-action">
+      <li class="list-group-item list-group-item-action" index="${j}">
         ${item.name}
+        <button id="remove-done" class="btn btn-link text-dark float-right">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
       </li>
       `)
+      j++;
     };
 
     JSON._save('to-do-lists', {
@@ -144,8 +149,12 @@ class App {
       this.renderLists();
       $('#new-item').val('');
     } else if (element.closest('button').is('#remove-this')) {
-      const removeItemIndex = element.parent().closest('li').attr('index');
-      this.toDoList.removeFromListByIndex(removeItemIndex);
+      const removeItemByIndex = element.parent().closest('li').attr('index');
+      this.toDoList.removeFromListByIndex(removeItemByIndex);
+      this.renderLists();
+    } else if (element.closest('button').is('#remove-done')) {
+      const removeDoneItemByIndex = element.parent().closest('li').attr('index');
+      this.toDoList.removeFromDoneListByIndex(removeDoneItemByIndex);
       this.renderLists();
     } else if (element.is('#check')) {
       const done = $('#check:checked').val();

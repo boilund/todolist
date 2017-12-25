@@ -29,6 +29,12 @@ class ToDoList {
     }
   }
 
+  removeFromDoneListByIndex(index) {
+    if (index >= 0) {
+      this.doneItems.splice(index, 1);
+    }
+  }
+
   removeFromListByName(name) {
     for (let i = 0; i < this.items.length; i++) {
       if (name === this.items[i].name) {
