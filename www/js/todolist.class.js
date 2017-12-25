@@ -77,7 +77,10 @@ class ToDoList {
     let index = this.getIndex(name, this.items, 'name');
 
     if (index > 0) {
+      let priority = this.items[index].priority;
+      this.items[index].priority = this.items[index - 1].priority;
       this.items[index].name = this.items[index - 1].name;
+      this.items[index - 1].priority = priority;
       this.items[index - 1].name = name;
     }
     return this.items;
@@ -87,7 +90,10 @@ class ToDoList {
     let index = this.getIndex(name, this.items, 'name');
 
     if (index < this.items.length - 1) {
+      let priority = this.items[index].priority;
+      this.items[index].priority = this.items[index + 1].priority;
       this.items[index].name = this.items[index + 1].name;
+      this.items[index + 1].priority = priority;
       this.items[index + 1].name = name;
     }
     return this.items;
